@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContentList } from '../helper-files/content-list';
 import { Content } from '../helper-files/content-interface';
+
 
 @Component({
   selector: 'app-content-card',
@@ -9,7 +9,7 @@ import { Content } from '../helper-files/content-interface';
 })
 export class ContentCardComponent implements OnInit  {
 
-  soccerTeams: Content= {
+ /* soccerTeams: Content= {
     id:1,
     title:"Flamengo",
     description:"Best brazilian football club",
@@ -36,20 +36,21 @@ export class ContentCardComponent implements OnInit  {
   }
 
   mySoccerTeams = new ContentList(this.soccerTeams);
-  contentList = this.mySoccerTeams.getitems();
+  contentList = this.mySoccerTeams.getitems(); */
 
   constructor(){
-    this.mySoccerTeams.addContent(this.soccerTeams);
+   /*  this.mySoccerTeams.addContent(this.soccerTeams);
     this.mySoccerTeams.addContent(this.soccerTeams2);
-    this.mySoccerTeams.addContent(this.soccerTeams3);
+    this.mySoccerTeams.addContent(this.soccerTeams3); */
   }
   ngOnInit():void{
-    const card = document.getElementById('soccerTeams');
+   /* const card = document.getElementById('soccerTeams');
     console.log(card);
     if(card){
       card.innerHTML += this.mySoccerTeams.printProperties(0);
       card.innerHTML += this.mySoccerTeams.printProperties(1);
       card.innerHTML += this.mySoccerTeams.printProperties(2);
-    }
+    } */
   }
 }
+
