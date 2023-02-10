@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { Component , Input , OnInit } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
 
@@ -15,9 +16,19 @@ export class ContentListComponent {
       description:"Soccer Team",
       creator:"João Vitor Santana Ebrenz",
       imgURL:"https://logodownload.org/wp-content/uploads/2016/09/flamengo-logo-0.png",
-      type:"Best Team",
+      type:"Best team",
+      tags:["Brazil", "Team"]
+    },
+    {
+      id: 2,
+      title:"Fluminense",
+      description:"Soccer Team",
+      creator:"João Vitor Santana Ebrenz",
+      imgURL:"https://upload.wikimedia.org/wikipedia/commons/a/ad/Fluminense_FC_escudo.png",
+      type:"Second best team",
       tags:["Brazil", "Team"]
     };
+
 }
 ngOnInit(): void {
 

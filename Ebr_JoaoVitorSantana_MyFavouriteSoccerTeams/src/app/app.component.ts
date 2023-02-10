@@ -7,9 +7,9 @@ import { Content } from './helper-files/content-interface';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Ebr_JoaoVitorSantana_MyFavouriteSoccerTeams';
+  title = 'Ebr_JoaoVitorSantana_WEB601Assignments_MyFavouriteSoccerTeams';
 
-  contentItem:Content = {
+  /*contentItem:Content = {
     id: 1,
       title:"Flamengo",
       description:"Soccer Team",
@@ -64,16 +64,17 @@ export class AppComponent {
       type:"Sixth best Team",
       tags:["Brazil", "Team"]
   };
+  */
 
-  contentArray: Content[];
+  /*contentArray: Content[];*/
   constructor(){
-    this.contentArray = [this.contentItem];
+    /*this.contentArray = [this.contentItem];
 
     this.contentArray.push(this.contentItem2);
     this.contentArray.push(this.contentItem3);
     this.contentArray.push(this.contentItem4);
     this.contentArray.push(this.contentItem5);
-    this.contentArray.push(this.contentItem6);
+    this.contentArray.push(this.contentItem6);*/
   }
 }
 
