@@ -34,7 +34,7 @@ export class ContentCardComponent implements OnInit  {
   contentItem3:Content= {
     id:3,
     title:"Botafogo",
-    description:"Third brazilian football player",
+    description:"Third brazilian best team",
     creator:"João Vitor Santana Ebrenz",
     imgURL:"https://logodownload.org/wp-content/uploads/2016/11/botafogo-logo-0.png",
     type:"Third best team"
