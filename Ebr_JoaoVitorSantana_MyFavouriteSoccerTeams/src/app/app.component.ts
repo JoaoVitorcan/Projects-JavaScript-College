@@ -7,7 +7,7 @@ import { Content } from './helper-files/content-interface';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Ebr_JoaoVitorSantana_WEB601Assignments_MyFavouriteSoccerTeams';
+ // title = 'Ebr_JoaoVitorSantana_WEB601Assignments_MyFavouriteSoccerTeams';
 
   /*contentItem:Content = {
     id: 1,

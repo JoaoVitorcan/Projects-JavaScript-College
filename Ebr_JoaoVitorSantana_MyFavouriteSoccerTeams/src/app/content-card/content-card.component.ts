@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output , Input } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
 
 
@@ -9,7 +9,37 @@ import { Content } from '../helper-files/content-interface';
 })
 export class ContentCardComponent implements OnInit  {
 
-  filteredString:any = '';
+  @Input() content: Content;
+  constructor() {
+    this.content = {
+      id: 1,
+      title:"Flamengo",
+      description:"Soccer Team",
+      creator:"João Vitor Santana Ebrenz",
+      imgURL:"https://logodownload.org/wp-content/uploads/2016/09/flamengo-logo-0.png",
+      type:"Best",
+      tags:["Flamengo", "Rio"]
+    },
+    {
+      id: 2,
+      title:"Fluminense",
+      description:"Soccer Team",
+      creator:"João Vitor Santana Ebrenz",
+      imgURL:"https://upload.wikimedia.org/wikipedia/commons/a/ad/Fluminense_FC_escudo.png",
+      type:"Second",
+      tags:["Fluminense", "Sp"]
+    };
+
+}
+ngOnInit(): void {
+
+
+}
+imageText() {
+  console.log("Image Url: " + this.content.imgURL + "Image Title:" + this.content.title);
+}
+
+   /* filteredString:any = '';
   searchTerm: string = '';
   message: string = '';
   messageColor: string = '';
@@ -90,21 +120,21 @@ contentItem8:Content= {
 
 contentArray: Content[];
 
-  constructor(){
+  /* constructor(){
     /*  this.mySoccerTeams.addContent(this.soccerTeams);
     this.mySoccerTeams.addContent(this.soccerTeams2);
     this.mySoccerTeams.addContent(this.soccerTeams3);  */
-    this.contentArray = [this.contentItem];
-    this.contentArray.push(this.contentItem2);
-    this.contentArray.push(this.contentItem3);
+    /* this.contentArray = [this.contentItem]; */
+    /*this.contentArray.push(this.contentItem2);*/
+    /*this.contentArray.push(this.contentItem3);
     this.contentArray.push(this.contentItem4);
     this.contentArray.push(this.contentItem5);
     this.contentArray.push(this.contentItem6);
     this.contentArray.push(this.contentItem7);
     this.contentArray.push(this.contentItem8);
-  }
+  }*/
 
-  search() {
+  /*search() {
     const content = this.contentArray.find(c => c.title.toLowerCase().substring(0,  this.searchTerm.length) === this.searchTerm.toLowerCase());
     console.log(this.searchTerm);
     if (content) {
@@ -115,15 +145,15 @@ contentArray: Content[];
       this.message = `Content with title "${this.searchTerm.toLowerCase()}" not found.`;
       this.messageColor = 'red';
     }
-  }
-  ngOnInit():void{
+  }*/
+ /* ngOnInit():void{
    /* const card = document.getElementById('soccerTeams');
     console.log(card);
     if(card){
       card.innerHTML += this.mySoccerTeams.printProperties(0);
       card.innerHTML += this.mySoccerTeams.printProperties(1);
       card.innerHTML += this.mySoccerTeams.printProperties(2);
-    } */
-  }
+    } 
+  } */
 }
 

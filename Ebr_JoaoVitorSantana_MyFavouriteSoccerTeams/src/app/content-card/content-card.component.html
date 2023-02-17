@@ -1,18 +1,19 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 mt-5">
-            <input [(ngModel)]="searchTerm" placeholder="Enter title">
-            <button (click)="search()">Search</button>
-            <div *ngIf="message">
-                <p [ngStyle]="{ color: messageColor }">{{ message }}</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2"></div>
-</div>
-
-<div class="row">
+<div class="{{ content.type }}">
+    <h2>{{ content.title }}</h2>
+    <p>{{ content.description }}</p>
+    <img *ngIf="content.imgURL;else defaultImage" class="image" src="{{ content.imgURL }}" (click)="imageText()"/><br>
+    By:<em> {{ content.creator }}</em>
+    <p>
+      <span appHoverAffect highlightType="tag" *ngFor="let tag of content.tags"  >
+        {{ tag }}
+      </span>
+    </p>
+    <p appHoverAffect highlightType="type" >Type: {{ content.type }}</p>
+  </div>
+  <ng-template #defaultImage>
+    <img class="image" src="https://png.pngtree.com/png-clipart/20200720/original/pngtree-red-black-retro-polygon-football-club-logo-png-image_4372780.jpg" alt="Default image">
+  </ng-template>
+<!-- <div class="row">
     <h2 class="m-5">Best team</h2>
     <app-content-list class="col-md-4  mt-5 mx-1 card bg-success text-white"
         *ngFor="let item of contentArray | contentFilter:'Best team'; index as i; first as isFirst" [content]="item"
@@ -32,3 +33,4 @@
         *ngFor="let item of contentArray | contentFilter:'Third best team'; index as i; first as isFirst" [content]="item"
         [class.is-first]="isFirst"></app-content-list>
 </div>
+-->
