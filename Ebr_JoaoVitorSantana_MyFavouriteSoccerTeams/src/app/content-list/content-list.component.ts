@@ -1,6 +1,7 @@
 import { style } from '@angular/animations';
 import { Component , Input , OnInit } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
+import { CreatecontentComponent } from '../createcontent/createcontent.component';
 
 @Component({
   selector: 'app-content-list',
@@ -131,4 +132,8 @@ export class ContentListComponent implements OnInit {
       card.innerHTML += this.mySoccerTeams.printProperties(2);
     } */
   } 
+  addNewContent(newContent:any){
+    this.contentArray.push(newContent);
+    this.contentArray = [...this.contentArray];
+}
 }

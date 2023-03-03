@@ -1,14 +1,13 @@
 import { Component, EventEmitter, OnInit, Output , Input } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
 
-
 @Component({
   selector: 'app-content-card',
   templateUrl: './content-card.component.html',
   styleUrls: ['./content-card.component.scss']
 })
 export class ContentCardComponent implements OnInit  {
-
+ 
   @Input() content: Content;
   constructor() {
     this.content = {
@@ -32,12 +31,12 @@ export class ContentCardComponent implements OnInit  {
 
 }
 ngOnInit(): void {
-
-
+  
 }
 imageText() {
   console.log("Image Url: " + this.content.imgURL + "Image Title:" + this.content.title);
 }
+  
 
    /* filteredString:any = '';
   searchTerm: string = '';

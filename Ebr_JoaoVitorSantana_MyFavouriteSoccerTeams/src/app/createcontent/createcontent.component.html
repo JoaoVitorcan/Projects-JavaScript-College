@@ -1,0 +1,36 @@
+<div>
+    <label for="contentId">Content ID:</label>
+    <input type="text"[(ngModel)]="id">
+  </div>
+  <br>
+  <div>
+    <label for="contentTitle">Content Title:</label>
+    <input type="text"[(ngModel)]="title">
+  </div>
+  <br>
+  <div>
+    <label for="contentDescription">Content Description:</label>
+    <input type="text"[(ngModel)]="description">
+  </div>
+  <br>
+  <div>
+    <label for="contentCreator">Content Creator:</label>
+    <input type="text"[(ngModel)]="creator">
+  </div>
+  <br>
+  <div>
+    <label for="contentimgURL">Content Image:</label>
+    <input type="text"[(ngModel)]="imgURL">
+  </div>
+  <br>
+  <div>
+    <label for="contentType">Content Type:</label>
+    <input type="text" [(ngModel)]="type">
+  </div>
+  <br>
+  <div>
+    <label for="contentTags">Content Tags:</label>
+    <input type="text"[(ngModel)]="tags">
+  </div>
+  <button (click)="createContent()">Create Content</button>
+  <div style="color: red;" *ngIf="errorMessage">{{ errorMessage }}</div>

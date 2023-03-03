@@ -1,18 +1,18 @@
 <div class="{{ content.type }}">
-    <h2>{{ content.title }}</h2>
-    <p>{{ content.description }}</p>
-    <img *ngIf="content.imgURL;else defaultImage" class="image" src="{{ content.imgURL }}" (click)="imageText()"/><br>
-    By:<em> {{ content.creator }}</em>
-    <p>
-      <span appHoverAffect highlightType="tag" *ngFor="let tag of content.tags"  >
-        {{ tag }}
-      </span>
-    </p>
-    <p appHoverAffect highlightType="type" >Type: {{ content.type }}</p>
-  </div>
-  <ng-template #defaultImage>
-    <img class="image" src="https://png.pngtree.com/png-clipart/20200720/original/pngtree-red-black-retro-polygon-football-club-logo-png-image_4372780.jpg" alt="Default image">
-  </ng-template>
+  <h2>{{ content.title }}</h2>
+  <p>{{ content.description }}</p>
+  <img *ngIf="content.imgURL;else defaultImage" class="image" src="{{ content.imgURL }}" (click)="imageText()"/><br>
+  By:<em> {{ content.creator }}</em>
+  <p>
+    <span appHoverAffect highlightType="tag" *ngFor="let tag of content.tags"  >
+      {{ tag }}
+    </span><!-- {{ content.tags }} -->
+  </p>
+  <p appHoverAffect highlightType="type" >Type: {{ content.type }}</p>
+</div>
+<ng-template #defaultImage>
+  <img class="image" src="https://png.pngtree.com/png-clipart/20200720/original/pngtree-red-black-retro-polygon-football-club-logo-png-image_4372780.jpg" alt="Default image">
+</ng-template>
 <!-- <div class="row">
     <h2 class="m-5">Best team</h2>
     <app-content-list class="col-md-4  mt-5 mx-1 card bg-success text-white"
@@ -34,3 +34,6 @@
         [class.is-first]="isFirst"></app-content-list>
 </div>
 -->
+
+
+

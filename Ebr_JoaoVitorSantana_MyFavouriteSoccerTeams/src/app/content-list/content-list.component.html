@@ -6,7 +6,7 @@
     <p>{{ content.tags }}</p>
     <p>Type: {{ content.type }}</p>
 </div> -->
-
+<app-createcontent (contentCreated)="addNewContent($event)"></app-createcontent>
 <div class="container">
     <div class="row">
       <div class="col-md-2"></div>

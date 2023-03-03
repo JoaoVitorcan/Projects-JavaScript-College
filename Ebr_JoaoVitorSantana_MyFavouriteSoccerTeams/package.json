@@ -1,6 +1,6 @@
 {
   "name": "ebr-joao-vitor-santana-my-favourite-soccer-teams",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
