@@ -1,7 +1,6 @@
-import { style } from '@angular/animations';
 import { Component , Input , OnInit } from '@angular/core';
 import { Content } from '../helper-files/content-interface';
-import { CreatecontentComponent } from '../createcontent/createcontent.component';
+import { TeamserviceService } from '../teamservice.service';
 
 @Component({
   selector: 'app-content-list',
@@ -10,6 +9,12 @@ import { CreatecontentComponent } from '../createcontent/createcontent.component
 })
 
 export class ContentListComponent implements OnInit {
+
+  @Input() content:Content[];
+  @Input() team:Content[];
+  @Input('ngModel')title: string;
+  name= "João Vitor Santana Ebrenz";
+
   
   filteredString:any = '';
   searchTerm: string = '';
@@ -17,7 +22,7 @@ export class ContentListComponent implements OnInit {
   messageColor: string = '';
 
 
-  contentItem:Content = {
+ /* contentItem:Content = {
     id: 1,
       title:"Flamengo",
       description:"Soccer Team",
@@ -51,7 +56,7 @@ export class ContentListComponent implements OnInit {
       description:"Soccer Team",
       creator:"João Vitor Santana Ebrenz",
       /*imgURL:"https://logodownload.org/wp-content/uploads/2016/09/flamengo-logo-0.png",
-      */ type:"Best",
+      */ /* type:"Best",
       tags:["Flamengo", "Rio"]
   };
   contentItem5:Content = {
@@ -60,7 +65,7 @@ export class ContentListComponent implements OnInit {
     description:"Soccer Team",
     creator:"João Vitor Santana Ebrenz",
     /*imgURL:"https://upload.wikimedia.org/wikipedia/commons/a/ad/Fluminense_FC_escudo.png",
-    */type:"Second",
+    */  /*type:"Second",
     tags:["Fluminense", "Sp"]
   };
   contentItem6:Content = {
@@ -69,7 +74,7 @@ export class ContentListComponent implements OnInit {
       description:"Soccer Team",
       creator:"João Vitor Santana Ebrenz",
       /*imgURL:"https://imagepng.org/wp-content/uploads/2018/04/vasco-escudo.png",
-      */type:"Third",
+      */    /*type:"Third",
       tags:["Vasco", "Bh"]
   };
 
@@ -91,28 +96,32 @@ export class ContentListComponent implements OnInit {
     imgURL:"https://upload.wikimedia.org/wikipedia/commons/a/ad/Fluminense_FC_escudo.png",
     type:"Second",
     tags:["Fluminense", "Sp"]
-  }
+  }*/
   
 
-  contentArray: Content[];
+  /*contentArray: Content[];*/
 
-   constructor(){
-    /*  this.mySoccerTeams.addContent(this.soccerTeams);
+  constructor(private teamservice: TeamserviceService){
+    this.title = '';
+  this.content = [];
+  this.team = [];
+
+    /*this.mySoccerTeams.addContent(this.soccerTeams);
     this.mySoccerTeams.addContent(this.soccerTeams2);
-    this.mySoccerTeams.addContent(this.soccerTeams3);  */
+    this.mySoccerTeams.addContent(this.soccerTeams3);  
     this.contentArray = [this.contentItem];
-    /*  this.contentArray.push(this.contentItem); */ 
+    this.contentArray.push(this.contentItem); 
     this.contentArray.push(this.contentItem2);
     this.contentArray.push(this.contentItem3);
     this.contentArray.push(this.contentItem4);
     this.contentArray.push(this.contentItem5);
     this.contentArray.push(this.contentItem6);
     this.contentArray.push(this.contentItem7);
-    this.contentArray.push(this.contentItem8);
+    this.contentArray.push(this.contentItem8); */
   }
 
   search() {
-    const content = this.contentArray.find(c => c.title.toLowerCase().substring(0,  this.searchTerm.length) === this.searchTerm.toLowerCase());
+    const content = this.content.find(c => c.title.toLowerCase().substring(0,  this.searchTerm.length) === this.searchTerm.toLowerCase());
     console.log(this.searchTerm);
     if (content) {
       this.message = `Content with title "${this.searchTerm.toLowerCase()}" found.`;
@@ -123,17 +132,14 @@ export class ContentListComponent implements OnInit {
       this.messageColor = 'red';
     }
   }
-  ngOnInit():void{
-   /* const card = document.getElementById('soccerTeams');
-    console.log(card);
-    if(card){
-      card.innerHTML += this.mySoccerTeams.printProperties(0);
-      card.innerHTML += this.mySoccerTeams.printProperties(1);
-      card.innerHTML += this.mySoccerTeams.printProperties(2);
-    } */
+  ngOnInit(){
+
+    this.teamservice.getSoccerTeams().subscribe(content=> this.content = content);
+    this.teamservice.getSpecificTeam(1).subscribe((team: Content[]) => this.team = team);
   } 
   addNewContent(newContent:any){
-    this.contentArray.push(newContent);
-    this.contentArray = [...this.contentArray];
-}
+    this.content.push(newContent);0
+    this.content = [...this.content];
+   }
+
 }
