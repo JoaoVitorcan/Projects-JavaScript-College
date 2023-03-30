@@ -7,11 +7,12 @@
     <p>Type: {{ content.type }}</p>
 </div> -->
 
-<div *ngFor="let teams of team" class="shadow">
+<!-- <div *ngFor="let teams of team" class="shadow">
   <app-content-card [content]="teams"></app-content-card>
-</div>
+</div>-->
 
-<app-createcontent (contentCreated)="addNewContent($event)"></app-createcontent>
+<app-modify-content (contentAdded)="addContentToList($event)"></app-modify-content>
+
 <div class="container">
     <div class="row">
       <div class="col-md-2"></div>
@@ -28,15 +29,17 @@
   
     <div class="row">
       <h2 class="m-5">Best</h2>
-      <app-content-card class="col-md-4  mt-5 mx-1 card bg-success text-white" *ngFor="let item of content | contentFilter:'Best'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
+      <app-content-card class="col-md-4  mt-5 mx-1 card bg-success text-white" *ngFor="let item of contentList | contentFilter:'Best'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
     </div>
   
     <div class="row">
       <h2 class="m-5">Second</h2>
-      <app-content-card class="col-md-4  mt-5 mx-1 card bg-dark text-light" *ngFor="let item of content | contentFilter:'Second'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
+      <app-content-card class="col-md-4  mt-5 mx-1 card bg-dark text-light" *ngFor="let item of contentList | contentFilter:'Second'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
     </div>
 
     <div class="row">
       <h2 class="m-5">Third</h2>
-      <app-content-card class="col-md-4  mt-5 mx-1 card bg-primary text-dark" *ngFor="let item of content | contentFilter:'Third'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
+      <app-content-card class="col-md-4  mt-5 mx-1 card bg-primary text-dark" *ngFor="let item of contentList | contentFilter:'Third'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
     </div>
+
+    

@@ -1,34 +1,46 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { catchError, Observable, of, pipe, tap, timer } from 'rxjs';
 import { Content } from './helper-files/content-interface';
-import { CONTENT } from './helper-files/contentDb';
 import { MessageService } from './message.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { InMemoryDataService } from './services/in-memory-data.service';
+import { ContentListComponent } from './content-list/content-list.component';
+import { switchMap} from 'rxjs/operators';
 
 
-@Injectable({
-  providedIn: 'root'
-})
-export class TeamserviceService {
-  getcontentCardArrayLength: any;
-  constructor(private messageservice: MessageService) { }
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class TeamserviceService {
+    private contentUrl = 'api/content';
   
-  getSoccerTeams(): Observable<Content[]> {
-    const teams = of(CONTENT)
-    this.messageservice.add('content array loaded!');
-    return teams;
-  }
-  getSpecificTeam(id : number): Observable<Content[]>{
-    const team = CONTENT.filter(obj=>obj.id == id);
-    this.messageservice.add('Content item at :' + id )
-    return of(team)
-  }
-
-
-  getClickedTeamCard(idNum:number){
-    const team = CONTENT.filter(obj => obj.id == idNum);
-    this.messageservice.add("Team Card Retrieved at id" + idNum)
-    return of(team)
-  }
-
+    private httpOptions = {
+      headers: new HttpHeaders({ 'Content-type':'application/json' })
+      };
+    
+    constructor(private messageservice: MessageService,private  http: HttpClient) {
+     }
+  
  
-}
+    getContent() : Observable<Content[]>{
+      return this.http.get<Content[]>(this.contentUrl);
+      
+    }
+  
+    addContent(newContentItem: Content): Observable<Content> {
+  
+      return this.http.post<Content>(this.contentUrl, newContentItem, this.httpOptions)
+      .pipe(
+        tap(() => {
+          this.messageservice.add('Content added successfully');
+        })
+      );
+    }
+    
+    updateContent(contentItem: Content): Observable<any>{
+      return this.http.put("api/content", contentItem,
+      this.httpOptions);
+    } 
+ 
+  }

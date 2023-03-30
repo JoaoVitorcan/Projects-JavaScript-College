@@ -34,7 +34,7 @@ export class CreatecontentComponent {
         id: this.id,
         title: this.title,
         author: this.creator,
-        body: this.description,
+        description: this.description,
         type: this.type,
         imgUrl: this.imgURL,
         tags: [this.tags]

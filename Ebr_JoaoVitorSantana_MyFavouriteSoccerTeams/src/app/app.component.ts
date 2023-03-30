@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { TeamserviceService } from './teamservice.service';
+import { MessageService } from './message.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  title = "Joao's App"
   
-  constructor(){}//private teamservice: TeamserviceService,private messageservice: MessageService){}
+  constructor(private teamservice: TeamserviceService,private messageservice: MessageService){}
 
-   
 }
