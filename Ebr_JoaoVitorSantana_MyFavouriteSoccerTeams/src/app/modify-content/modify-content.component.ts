@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Content } from '../helper-files/content-interface';
 import { TeamserviceService } from '../teamservice.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -7,11 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ContentDialogComponent } from '../content-dialog/content-dialog.component';
 import { MessageService } from '../message.service';
 
-@Component({
-  selector: 'app-modify-content',
-  templateUrl: './modify-content.component.html',
-  styleUrls: ['./modify-content.component.scss']
-})
 export class ModifyContentComponent {
 
   @Output() contentAdded = new EventEmitter<Content>();
@@ -31,7 +25,7 @@ export class ModifyContentComponent {
    addContent(): void {
     this.teamservice
       .addContent(this.newContentItem)
-      .subscribe(newContent  => { 
+      .subscribe((newContent: Content | undefined)  => { 
         this.contentAdded.emit(newContent);
         this.newContentItem = {
           id: null,

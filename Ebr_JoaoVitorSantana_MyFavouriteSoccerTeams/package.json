@@ -1,6 +1,6 @@
 {
   "name": "ebr-joao-vitor-santana-my-favourite-soccer-teams",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -22,6 +22,7 @@
     "@angular/platform-browser": "^15.1.0",
     "@angular/platform-browser-dynamic": "^15.1.0",
     "@angular/router": "^15.1.0",
+    "@angular/service-worker": "^15.1.0",
     "angular-in-memory-web-api": "^0.15.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
