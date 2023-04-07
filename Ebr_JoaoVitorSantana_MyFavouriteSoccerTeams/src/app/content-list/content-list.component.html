@@ -12,34 +12,101 @@
 </div>-->
 
 <app-modify-content (contentAdded)="addContentToList($event)"></app-modify-content>
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+  <mat-tab label="Best">
+    <h3>Best</h3>
+    <mat-card  [ngClass]="(item.type)" class="contentCard" *ngFor="let item of contentList | contentFilter:'Best'; index as i; first as First" [class.is-first]="First">
+      <mat-card-header class="contentTitle">
+        <mat-card-title-group>
+          <mat-card-title class="Title">{{ item.title }}</mat-card-title>
+          <mat-card-subtitle class="Type" *ngIf="item.type" HoverAffect affect="underline">{{ item.type }}</mat-card-subtitle>
+          <img mat-card-md-image  *ngIf="item.imgURL" src="{{ item.imgURL }}" alt="" >
+          <img mat-card-md-image  *ngIf="!item.imgURL" src="https://png.pngtree.com/png-clipart/20200720/original/pngtree-red-black-retro-polygon-football-club-logo-png-image_4372780.jpg"  alt="" >
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="contentMembers">{{ item.creator }}</p>
+        <p class="contentDesc">{{ item.description }}</p>
+        <ul *ngIf="item.tags">
+          <li class="contentTags" *ngFor="let tag of item.tags" HoverAffect affect="bold">
+            {{ tag }}
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Second">
+    <h3>Second</h3>
+    <mat-card  [ngClass]="(item.type)" class="contentCard" *ngFor="let item of contentList | contentFilter: 'Second'; index as i; first as First" [class.is-first]="First">
+      <mat-card-header class="contentTitle">
+        <mat-card-title-group>
+          <mat-card-title class="Title">{{ item.title }}</mat-card-title>
+          <mat-card-subtitle class="Type" *ngIf="item.type" HoverAffect affect="underline">{{ item.type }}</mat-card-subtitle>
+          <img mat-card-md-image  *ngIf="item.imgURL" src="{{ item.imgURL }}" alt=""   >
+          <img mat-card-md-image  *ngIf="!item.imgURL" src="https://png.pngtree.com/png-clipart/20200720/original/pngtree-red-black-retro-polygon-football-club-logo-png-image_4372780.jpg"  alt=""  >
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="contentMembers">{{ item.creator }}</p>
+        <p class="contentDesc">{{ item.description }}</p>
+        <ul *ngIf="item.tags">
+          <li class="contentTags" *ngFor="let tag of item.tags" HoverAffect affect="bold">
+            {{ tag }}
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Third">
+    <h3>Third</h3>
+    <mat-card  [ngClass]="(item.type)" class="contentCard" *ngFor="let item of contentList | contentFilter: 'Third'; index as i; first as First" [class.is-first]="First">
+      <mat-card-header class="contentTitle">
+        <mat-card-title-group>
+          <mat-card-title class="Title">{{ item.title }}</mat-card-title>
+          <mat-card-subtitle class="Type" *ngIf="item.type" HoverAffect affect="underline">{{ item.type }}</mat-card-subtitle>
+          <img mat-card-md-image  *ngIf="item.imgURL" src="{{ item.imgURL }}" alt=""  >
+          <img mat-card-md-image  *ngIf="!item.imgURL" src="https://png.pngtree.com/png-clipart/20200720/original/pngtree-red-black-retro-polygon-football-club-logo-png-image_4372780.jpg"  alt=""  >
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="contentMembers">{{ item.creator }}</p>
+        <p class="contentDesc">{{ item.description }}</p>
+        <ul *ngIf="item.tags">
+          <li class="contentTags" *ngFor="let tag of item.tags" HoverAffect affect="bold">
+            {{ tag }}
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>
 
 <div class="container">
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8 mt-5">
-        <input [(ngModel)]="searchTerm" placeholder="Enter title">
-        <button (click)="search()">Search</button>
-        <div *ngIf="message">
-          <p [ngStyle]="{ color: messageColor }">{{ message }}</p>
-        </div>
-  </div> 
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 mt-5">
+      <mat-form-field> <input matInput [(ngModel)]="searchTerm" placeholder="Enter title"></mat-form-field>
+      <button mat-raised-button color="primary" (click)="search()">Search</button>
+      <div *ngIf="message">
+        <p [ngStyle]="{ color: messageColor }">{{ message }}</p>
       </div>
-      <div class="col-md-2"></div>
+</div> 
     </div>
-  
-    <div class="row">
-      <h2 class="m-5">Best</h2>
-      <app-content-card class="col-md-4  mt-5 mx-1 card bg-success text-white" *ngFor="let item of contentList | contentFilter:'Best'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
-    </div>
-  
-    <div class="row">
-      <h2 class="m-5">Second</h2>
-      <app-content-card class="col-md-4  mt-5 mx-1 card bg-dark text-light" *ngFor="let item of contentList | contentFilter:'Second'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
-    </div>
+    <div class="col-md-2"></div>
+  </div>
 
-    <div class="row">
-      <h2 class="m-5">Third</h2>
-      <app-content-card class="col-md-4  mt-5 mx-1 card bg-primary text-dark" *ngFor="let item of contentList | contentFilter:'Third'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
-    </div>
 
-    
+  <div class="row">
+    <h2 class="m-5">Best</h2>
+    <app-content-card class="col-md-4  mt-5 mx-1 card bg-success text-white" *ngFor="let item of contentList | contentFilter:'Best'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
+  </div>
+
+  <div class="row">
+    <h2 class="m-5">Second</h2>
+    <app-content-card class="col-md-4  mt-5 mx-1 card bg-dark text-light" *ngFor="let item of contentList | contentFilter:'Second'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
+  </div>
+
+  <div class="row">
+    <h2 class="m-5">Third</h2>
+    <app-content-card class="col-md-4  mt-5 mx-1 card bg-primary text-dark" *ngFor="let item of contentList | contentFilter:'Third'; index as i; first as isFirst" [content]="item" [class.is-first]="isFirst"></app-content-card>
+  </div>

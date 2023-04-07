@@ -1,8 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { MatButtonModule } from'@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +17,13 @@ import { CreatecontentComponent } from './createcontent/createcontent.component'
 import { MessagesComponent } from './messages/messages.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ModifyContentComponent } from './modify-content/modify-content.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogComponent } from './dialog/dialog.component';
+import { ContentDialogComponent } from './content-dialog/content-dialog.component';
+import { CommonModule } from "@angular/common";
+import {MatCardModule} from "@angular/material/card";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -26,7 +36,10 @@ import { ModifyContentComponent } from './modify-content/modify-content.componen
     HoverAffectDirective,
     CreatecontentComponent,
     MessagesComponent,
-    ModifyContentComponent
+    ModifyContentComponent,
+    DialogComponent,
+    ContentDialogComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -35,7 +48,15 @@ import { ModifyContentComponent } from './modify-content/modify-content.componen
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService,{
       dataEncapsulation: false
-      })
+      }),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatDialogModule,
+    CommonModule,
+    MatCardModule,
+    MatTabsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
