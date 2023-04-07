@@ -41,7 +41,7 @@ export class ContentListComponent implements OnInit {
 
   ngOnInit(){
 
-    this.teamservice.getContent().subscribe(content => this.contentList = content);
+    this.teamservice.getContent().subscribe((content: Content[]) => this.contentList = content);
   } 
 
   addNewContent(newContent:any){
@@ -51,7 +51,7 @@ export class ContentListComponent implements OnInit {
 
    addContentToList(newContentItem: Content) : void {
     
-    this.teamservice.getContent().subscribe(content =>this.contentList = content)
+    this.teamservice.getContent().subscribe((content: Content[]) =>this.contentList = content)
     console.log(`Content added succesfully : ${newContentItem.title}`);
     console.log(newContentItem);
     }
