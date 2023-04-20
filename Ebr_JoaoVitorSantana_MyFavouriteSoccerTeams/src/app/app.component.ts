@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TeamserviceService } from './teamservice.service';
 import { MessageService } from './message.service';
-import { of } from 'rxjs';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,14 @@ import { of } from 'rxjs';
 })
 export class AppComponent {
   
-  constructor(private teamservice: TeamserviceService,private messageservice: MessageService){}
+  constructor(private teamservice: TeamserviceService,private messageservice: MessageService ,private router: Router){}
 
+    ngOnInit() {
+      const id = 8;
+    }
+    navigateToList() {
+      this.router.navigate(['/list']);
+    }
+  
+  
 }

@@ -6,6 +6,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ContentDialogComponent } from '../content-dialog/content-dialog.component';
 import { MessageService } from '../message.service';
 
+@Component({
+  selector: 'app-modify-content',
+  templateUrl: './modify-content.component.html',
+  styleUrls: ['./modify-content.component.scss']
+})
+
 export class ModifyContentComponent {
 
   @Output() contentAdded = new EventEmitter<Content>();
@@ -22,6 +28,9 @@ export class ModifyContentComponent {
 
   constructor(private teamservice: TeamserviceService, private dialog: MatDialog,private messagesService: MessageService) {}
   
+  
+
+
    addContent(): void {
     this.teamservice
       .addContent(this.newContentItem)
@@ -36,19 +45,23 @@ export class ModifyContentComponent {
           type: '',
           tags: [],
         };
+
       }); 
+
     }
     openDialog(): void {
       const dialogRef: MatDialogRef<ContentDialogComponent> = this.dialog.open(ContentDialogComponent, {
-        width: '400px',
+        width: '500px',
         data: { title: 'Add Book' } 
       });
 
     dialogRef.afterClosed().subscribe((result: Content | undefined) => {
       if (result) {
-        this.messagesService.add(`Content added: ${result.title}`);
-        this.contentAdded.emit(result);
-        this.teamservice.addContent(result).subscribe();
+         this.teamservice.addContent(result).subscribe(() => {
+           this.messagesService.add(`Content added: ${result.title}`);
+           this.contentAdded.emit(result);
+         });
+        
       }
       dialogRef.componentInstance.contentAdded.subscribe((content: Content) => {
         console.log(`Content added: ${content.title}`);

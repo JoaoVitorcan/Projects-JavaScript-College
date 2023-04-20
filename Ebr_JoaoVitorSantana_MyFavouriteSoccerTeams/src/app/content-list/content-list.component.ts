@@ -1,5 +1,5 @@
 import { Component , Input , OnInit } from '@angular/core';
-import { ContentFilterPipe } from '../content-filter.pipe';
+import { ActivatedRoute } from "@angular/router";
 import { Content } from '../helper-files/content-interface';
 import { TeamserviceService } from '../teamservice.service';
 
@@ -20,12 +20,15 @@ export class ContentListComponent implements OnInit {
   messageColor: string = '';
   static highestId: 0;
 
- constructor(private teamservice: TeamserviceService ){
+  constructor(private teamservice: TeamserviceService, private route: ActivatedRoute ){
 
   
-  this.contentList= [];
-  } 
-
+    this.contentList= [];
+    this.route.params.subscribe((params: { [x: string]: any; }) => {
+      const id = params['id'];
+    })
+    } 
+    
   search() {
     const content = this.contentList.find(c => c.title.toLowerCase().substring(0,  this.searchTerm.length) === this.searchTerm.toLowerCase());
     console.log(this.searchTerm);
