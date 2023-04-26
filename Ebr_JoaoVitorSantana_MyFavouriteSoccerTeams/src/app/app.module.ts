@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,11 +22,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComponent } from './dialog/dialog.component';
 import { ContentDialogComponent } from './content-dialog/content-dialog.component';
 import { CommonModule } from "@angular/common";
-import {MatCardModule} from "@angular/material/card";
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatSelectModule} from "@angular/material/select";
+import { MatCardModule } from "@angular/material/card";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatSelectModule } from "@angular/material/select";
 import { SpecificContentComponent } from './specific-content/specific-content.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { LogUpdateService } from './log-update.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -63,9 +66,18 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatTabsModule,
     MatSelectModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ServiceWorkerModule.register('ngsw-worker.js'),
+    MatSnackBarModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
+    
   ],
-  providers: [],
+  providers: [LogUpdateService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
